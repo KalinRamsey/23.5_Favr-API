@@ -1,0 +1,4 @@
+TRUNCATE
+  favors,
+  users
+  RESTART IDENTITY CASCADE;
