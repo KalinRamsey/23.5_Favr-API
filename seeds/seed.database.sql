@@ -81,4 +81,6 @@ VALUES
     3,
     'Test Favor 2',
     'User "Sample" asked this favor from user "Test"'
-  )
+  );
+
+COMMIT;
