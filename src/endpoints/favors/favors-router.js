@@ -30,8 +30,8 @@ favorsRouter
                         error: `Missing '${key}' in request body`
                     });
 
-        newFavor.to_user_id = req.to_user_id;
-        newFavor.from_user_id = req.from_user_id;
+        newFavor.to_user_id = req.body.to_user_id;
+        newFavor.from_user_id = req.body.from_user_id;
 
         FavorsService.insertFavor(
                 req.app.get('db'),
@@ -53,15 +53,15 @@ favorsRouter
         res.json(FavorsService.serializeFavor(res.favor));
     })
     .patch(requireAuth, jsonParser, (req, res, next) => {
-        const { completed, cancelled } = req.body;
-        const favorPatch = { completed, cancelled };
+        const { completed, cancelled, end_date } = req.body;
+        const favorPatch = { completed, cancelled, end_date };
 
         const numOfValues = Object.values(favorPatch)
         if (numOfValues === 0) {
             return res
                 .status(400)
                 .json({
-                    error: `Request body must contain either 'completed' or 'cancelled'`
+                    error: `Request body must contain either 'completed', 'end_date', or 'cancelled'`
                 });
         }
 

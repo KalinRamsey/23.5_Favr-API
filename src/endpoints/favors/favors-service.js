@@ -30,11 +30,12 @@ const FavorsService = {
             });
     },
     patchFavor(db, id, newFavorFields) {
+        console.log([db, id, newFavorFields])
         return db('favors')
             .where({ id })
             .update(newFavorFields);
     },
-    deleteFavor(Db, id) {
+    deleteFavor(db, id) {
         return db('favors')
             .where({ id })
             .delete();
@@ -45,7 +46,11 @@ const FavorsService = {
             to_user_id: favor.to_user_id,
             from_user_id: favor.from_user_id,
             favor_title: xss(favor.favor_title),
-            favor_content: xss(favor.favor_content)
+            favor_content: xss(favor.favor_content),
+            completed: favor.completed,
+            cancelled: favor.cancelled,
+            assigned_date: favor.assigned_date,
+            end_date: favor.end_date
         };
     }
 };

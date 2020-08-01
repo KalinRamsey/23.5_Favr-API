@@ -91,15 +91,15 @@ usersRouter
         res.json(UsersService.serializeUser(res.user));
     })
     .patch(requireAuth, jsonParser, (req, res, next) => {
-        const { username, email, password, about_me } = req.body;
-        const userPatch = { username, email, password, about_me };
+        const { about_me, img_link, date_modified } = req.body;
+        const userPatch = { about_me, img_link, date_modified };
 
         const numOfValues = Object.values(userPatch);
         if (numOfValues === 0) {
             return res
                 .status(400)
                 .json({
-                    error: `Request body must contain either 'username', 'email', 'password', or 'about_me'`
+                    error: `Request body must contain either 'about_me' or 'img_link'`
                 });
         }
 

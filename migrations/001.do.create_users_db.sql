@@ -5,6 +5,7 @@ CREATE TABLE users (
   username TEXT NOT NULL,
   email TEXT NOT NULL,
   password TEXT NOT NULL,
+  img_link TEXT,
   about_me TEXT,
   date_created TIMESTAMPTZ DEFAULT now() NOT NULL,
   date_modified TIMESTAMPTZ DEFAULT now()

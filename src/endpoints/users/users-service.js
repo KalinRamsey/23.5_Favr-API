@@ -66,6 +66,7 @@ const UsersService = {
             id: user.id,
             username: xss(user.username),
             about_me: xss(user.about_me),
+            img_link: xss(user.img_link),
             date_created: new Date(user.date_created),
         };
     }

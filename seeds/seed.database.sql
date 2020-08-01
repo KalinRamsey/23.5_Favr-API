@@ -5,24 +5,27 @@ TRUNCATE
   users
   RESTART IDENTITY CASCADE;
 
-INSERT INTO users (username, email, password, about_me)
+INSERT INTO users (username, email, password, img_link, about_me)
 VALUES
   (
     'Demo',
     'demo@test.com',
-    'Testing123!',
+    '$2a$12$08kGNzDTxagwrGviLKI2qOMz0up7xcy2glp1fdT2dSJDhXjIUcScK',  -- 'Testing123!'
+    'https://wallpaperplay.com/walls/full/6/0/0/214911.jpg',
     'This is a sample "About Me" section. Write something nice!'
   ),
   (
     'Sample',
     'sample@test.com',
-    'Testing123!',
+    '$2a$12$08kGNzDTxagwrGviLKI2qOMz0up7xcy2glp1fdT2dSJDhXjIUcScK', -- 'Testing123!'
+    'https://brooklynlasertattooremoval.com/wp-content/uploads/2017/11/assorted-paint-colors-abstract-header.jpg',
     'Here is another sample "About Me" section.'
   ),
   (
     'Test',
     'test@test.com',
-    'Testing123!',
+    '$2a$12$08kGNzDTxagwrGviLKI2qOMz0up7xcy2glp1fdT2dSJDhXjIUcScK', -- 'Testing123!'
+    'https://coverfiles.alphacoders.com/345/34569.jpg',
     'This "About Me" section should be very interesting!'
   );
 
