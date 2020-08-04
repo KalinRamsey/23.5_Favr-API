@@ -1,26 +1,52 @@
-# Express Boilerplate!
+# FAVR App
+[Live Demo](https://favr-app.kramseyart.vercel.app/)
+[Client Repo](https://github.com/KRamseyArt/23.4_FAVR-Client)
 
-This is a boilerplate project used for starting new projects!
+#### Tech Used:
+- PostgreSQL
+- Express
+- ReactJS
+- NodeJS
+- CSS
 
-## Set Up
+#### Summary:
+- The landing page displays an informational overview about how to use the application.
+![Landing Page Screenshot](https://github.com/KRamseyArt/23.4_FAVR-Client/tree/master/Screenshots/1_Landing.jpg)
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+- User is able to create a new ccount by submitting a unique username, along with an email address and validated password.
+![Sign Up Screenshot](https://github.com/KRamseyArt/23.4_FAVR-Client/tree/master/Screenshots/2_SignUp.jpg)
+![Log In Screenshot](https://github.com/KRamseyArt/23.4_FAVR-Client/tree/master/Screenshots/3_LogIn.jpg)
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+- Once logged in, user is directed to Favors page to view list of their current to-do list, as well as an aggregate list of favors they have tasked to other users
+- User can create new favors, to send to others, delete favors they've assigned to others, and mark favors on their personal to-do list as 'completed' or 'cancelled'
+![Favors Screenshot](https://github.com/KRamseyArt/23.4_FAVR-Client/tree/master/Screenshots/4_Favors.jpg)
+![Create Favor Screenshot](https://github.com/KRamseyArt/23.4_FAVR-Client/tree/master/Screenshots/5_NewFavor.jpg)
 
-## Scripts
+- User can review statistics on their personal account, as well as customize a header image and about_me section
+![Profile Page Screenshot](https://github.com/KRamseyArt/23.4_FAVR-Client/tree/master/Screenshots/6_ProfilePage.jpg)
+![Edit Profile Screenshot](https://github.com/KRamseyArt/23.4_FAVR-Client/tree/master/Screenshots/7_EditProfile.jpg)
 
-Start the application `npm start`
+- Visitors can view information about the app's creator by clicking the button in the bottom-right corner of all pages at any time
+![About The Author Screenshot](https://github.com/KRamseyArt/23.4_FAVR-Client/tree/master/Screenshots/8_AboutAuthor.jpg)
 
-Start nodemon for the application `npm run dev`
-
-Run the test `npm test`
-
-## Deploying
-
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+# API Documentation:
+- [Live API](https://radiant-wildwood-06130.herokuapp.com/)
+#### Users
+- (/)
+  - GET: Returns a list of all current users registered
+  - POST: Create new user with params `{ email, username, password }`
+- (/:userId)
+  - GET: Return a single user
+  - PATCH: Edit `{  about_me, profile_img, date_modified }` of a single user, given a specific ID and valid authentication
+  - DELETE: Remove a user from the database given a specific user ID and valid authentication
+- (/:userId/favors)
+  - GET: Return all Favors assigned to a user, given a specific user ID
+  - POST: Add a new Favor to a user's collection with params `{ favor_title, favor_content, to_user_id, from_user_id }`
+#### Favors
+- (/)
+  - GET: Returns all Favors stored in the database
+  - POST: Add a Favor to the database with params `{ favor_title, favor_content, to_user_id, from_user_id }`
+- (/:favorId)
+  - GET: Return a specific Favor, given a specific Favor ID
+  - PATCH: Edit a specific Favor with params `{ completed, cancelled, end_date }`, given a specific Favor ID and valid authentication
+  - DELETE: Remove a specific Favor from the database, given a specific Favor ID and valid authentication
